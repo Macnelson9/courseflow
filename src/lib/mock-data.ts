@@ -171,4 +171,16 @@ export const availableCourses: CourseCatalogItem[] = [
       "Building secure Bitcoin utilities",
     ],
   },
+  {
+    slug: "product-management",
+    name: "Product Management",
+    description: "Learn how to discover user needs, define product strategy, and ship impactful products.",
+    curriculum: [
+      "Product thinking and problem framing",
+      "User research and insight synthesis",
+      "Prioritization frameworks and roadmap planning",
+      "Writing product requirement documents (PRDs)",
+      "Product analytics, experiments, and iteration",
+    ],
+  },
 ];

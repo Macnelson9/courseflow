@@ -16,7 +16,7 @@ export default function PublicLayout({ children }: Readonly<{ children: React.Re
         {children}
       </main>
       <footer className="border-t border-black bg-black px-4 py-6 text-center font-data text-caption text-white md:px-8">
-        CourseFlow
+        CourseFlow 2026
       </footer>
     </div>
   );

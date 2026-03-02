@@ -45,7 +45,11 @@ export function Shell({
         </div>
       </div>
       <footer className="w-full border-t border-black bg-black px-4 py-4 text-center font-data text-caption text-white md:px-8">
-        CourseFlow
+        <span className="inline-flex items-center gap-1 align-middle">
+          <span>CourseFlow</span>
+          <span className="leading-none">©</span>
+          <span>2026</span>
+        </span>
       </footer>
     </div>
   );
