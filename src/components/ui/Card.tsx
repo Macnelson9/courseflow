@@ -27,7 +27,7 @@ export function Card({
   ...props
 }: Readonly<CardProps>) {
   return (
-    <section className={cn("border", variantMap[variant], className)} {...props}>
+    <section data-gsap-card="true" data-animate="fade-up" className={cn("border", variantMap[variant], className)} {...props}>
       {title || description || action ? (
         <header
           className={cn(

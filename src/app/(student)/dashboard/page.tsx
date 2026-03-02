@@ -26,9 +26,11 @@ export default async function StudentDashboardPage() {
         <CourseMaterials materials={course.materials} />
         <AssignmentList assignments={course.assignments} />
         <div className="md:col-span-2">
+          <h2 className="mb-3 font-mono text-label uppercase tracking-[0.16em] text-foreground">Mentors</h2>
           <MentorGrid mentors={mentors} />
         </div>
         <div className="md:col-span-2">
+          <h2 className="mb-3 font-mono text-label uppercase tracking-[0.16em] text-foreground">Classmates</h2>
           <ClassmateGrid classmates={classmates} />
         </div>
       </DashboardGrid>

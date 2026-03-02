@@ -27,6 +27,7 @@
   html,
   body {
     height: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -46,6 +47,56 @@
 
   .font-data {
     font-family: var(--font-mono), monospace;
+  }
+}
+
+@layer components {
+  .stack-btn,
+  .home-btn-accent {
+    position: relative;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0 #000000 !important;
+    transition: box-shadow 180ms ease-out, transform 180ms ease-out;
+  }
+
+  .stack-btn:hover,
+  .home-btn-accent:hover {
+    box-shadow: 12px 12px 0 #000000 !important;
+    transform: translate(-1px, -1px);
+  }
+
+  .stack-btn:active,
+  .home-btn-accent:active {
+    box-shadow: 9px 9px 0 #000000 !important;
+    transform: translate(0, 0);
+  }
+
+  .stack-btn-inverse {
+    position: relative;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    box-shadow: 8px 8px 0 #ffffff !important;
+    transition: box-shadow 180ms ease-out, transform 180ms ease-out;
+  }
+
+  .stack-btn-inverse:hover {
+    box-shadow: 12px 12px 0 #ffffff !important;
+    transform: translate(-1px, -1px);
+  }
+
+  .stack-btn-inverse:active {
+    box-shadow: 9px 9px 0 #ffffff !important;
+    transform: translate(0, 0);
+  }
+
+  .stack-btn-inverse-active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: 8px 8px 0 #ffffff !important;
   }
 }
 

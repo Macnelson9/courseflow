@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Space_Mono } from "next/font/google";
 import "@/app/globals.css";
+import { AppAnimations } from "@/components/motion/AppAnimations";
 
 const sans = Sora({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to main content
         </a>
+        <AppAnimations />
         {children}
       </body>
     </html>

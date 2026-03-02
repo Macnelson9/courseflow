@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PublicNav } from "@/components/layout/PublicNav";
 
 export default function PublicLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -8,26 +9,7 @@ export default function PublicLayout({ children }: Readonly<{ children: React.Re
           <Link href="/" className="font-data text-label uppercase tracking-[0.12em]">
             CourseFlow
           </Link>
-          <nav className="flex flex-wrap items-center gap-2 font-data text-caption uppercase">
-            <Link
-              href="/apply"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center border border-white bg-black px-4 font-mono text-caption uppercase tracking-[0.08em] text-white transition hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
-            >
-              Apply
-            </Link>
-            <Link
-              href="/login?role=student"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center border border-white bg-black px-4 font-mono text-caption uppercase tracking-[0.08em] text-white transition hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
-            >
-              Student Login
-            </Link>
-            <Link
-              href="/login?role=admin"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center border border-white bg-black px-4 font-mono text-caption uppercase tracking-[0.08em] text-white transition hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
-            >
-              Admin Login
-            </Link>
-          </nav>
+          <PublicNav />
         </div>
       </header>
       <main id="main-content" className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-8 md:py-12">

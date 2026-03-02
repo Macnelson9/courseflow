@@ -8,16 +8,16 @@ export default function LandingPage() {
     <div className="space-y-6">
       <section className="space-y-4 border border-border bg-primary p-8 text-inverse-fg">
         <p className="font-mono text-caption uppercase tracking-[0.1em] text-muted-2">CourseFlow Platform</p>
-        <h1 className="text-display">From Application to Attendance</h1>
+        <h1 className="break-words text-[clamp(30px,8vw,64px)] leading-[0.95]">From Application to Attendance</h1>
         <p className="max-w-3xl font-data text-body text-muted-2">
           Student enrollment, admin acceptance, and QR-powered attendance in one workflow.
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-6">
           <Link href="/apply">
-            <Button variant="secondary">Apply Now</Button>
+            <Button variant="secondary" className="home-btn-accent mb-3 mr-3" data-no-gsap="true">Apply Now</Button>
           </Link>
           <Link href="/login?role=student">
-            <Button variant="secondary">Student Login</Button>
+            <Button variant="secondary" className="home-btn-accent mb-3 mr-3" data-no-gsap="true">Student Login</Button>
           </Link>
         </div>
       </section>
@@ -25,7 +25,7 @@ export default function LandingPage() {
       <section id="welcome-section" className="space-y-8 border border-border bg-surface p-8">
         <section className="space-y-3 border border-border bg-primary p-8 text-inverse-fg">
           <p className="font-mono text-caption uppercase tracking-[0.1em] text-muted-2">First-time welcome</p>
-          <h2 className="text-display">Welcome to CourseFlow</h2>
+          <h2 className="break-words text-[clamp(30px,8vw,64px)] leading-[0.95]">Welcome to CourseFlow</h2>
           <p className="max-w-3xl font-data text-body text-muted-2">
             CourseFlow helps you discover a course, submit your application, and track attendance through QR-based check-ins once accepted.
           </p>

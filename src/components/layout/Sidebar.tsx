@@ -58,7 +58,8 @@ export function Sidebar({
             type="button"
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             onClick={() => setCollapsed((value) => !value)}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-white/25 bg-black text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="stack-btn-inverse inline-flex min-h-11 min-w-11 items-center justify-center border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            data-no-gsap="true"
           >
             {collapsed ? <ChevronRight className="h-4 w-4" aria-hidden="true" /> : <ChevronLeft className="h-4 w-4" aria-hidden="true" />}
           </button>
@@ -74,10 +75,12 @@ export function Sidebar({
             <Link
               key={item.href}
               href={item.href}
+              data-gsap-button="true"
+              data-no-gsap="true"
               className={cn(
-                "flex min-h-11 items-center gap-3 border bg-black px-3 py-2 font-mono text-caption uppercase tracking-[0.1em] text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
+                "stack-btn-inverse flex min-h-11 items-center gap-3 border px-3 py-2 font-mono text-caption uppercase tracking-[0.1em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                 collapsible && !collapsed ? "justify-start" : "justify-center",
-                active ? "border-white" : "border-white/20 hover:border-white/40",
+                active ? "stack-btn-inverse-active" : "",
               )}
             >
               <Icon className="h-5 w-5" aria-hidden="true" />
