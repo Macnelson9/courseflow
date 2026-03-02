@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CourseCard } from "@/components/course/CourseCard";
-import { sampleCourse } from "@/lib/mock-data";
+import { availableCourses, sampleCourse } from "@/lib/mock-data";
 import { Button } from "@/components/ui/Button";
 
 export default function LandingPage() {
@@ -58,7 +58,33 @@ export default function LandingPage() {
         </section>
       </section>
 
-      <CourseCard course={sampleCourse} />
+      <section className="space-y-4 border border-border bg-surface p-8">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="font-mono text-label uppercase tracking-[0.1em] text-foreground">All Courses</h2>
+          <p className="font-mono text-caption text-muted">{availableCourses.length} available</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {availableCourses.map((course) => (
+            <Link
+              key={course.slug}
+              href={`/courses/${course.slug}`}
+              className="stack-card block p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <p className="text-body font-bold uppercase tracking-[0.08em] text-foreground">Course</p>
+              <h3 className="mt-2 text-h3 text-foreground">{course.name}</h3>
+              <p className="mt-2 font-mono text-caption text-muted">{course.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="font-mono text-label uppercase tracking-[0.1em] text-foreground">Active Courses</h2>
+          <p className="font-mono text-caption text-muted">Currently running</p>
+        </div>
+        <CourseCard course={sampleCourse} />
+      </section>
     </div>
   );
 }

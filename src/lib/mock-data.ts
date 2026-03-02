@@ -4,6 +4,13 @@ import type { Course } from "@/lib/types/course";
 import type { Mentor } from "@/lib/types/mentor";
 import type { Classmate } from "@/lib/types/student";
 
+export interface CourseCatalogItem {
+  slug: string;
+  name: string;
+  description: string;
+  curriculum: string[];
+}
+
 export const sampleCourse: Course = {
   id: "course-1",
   name: "Intro to Rust",
@@ -90,3 +97,78 @@ export const sampleAttendanceSession: AttendanceSession = {
     { studentId: "st3", name: "Nora Lin", email: "nora@example.com", status: "present", checkedInAt: "10:09 AM" },
   ],
 };
+
+export const availableCourses: CourseCatalogItem[] = [
+  {
+    slug: "intro-to-rust",
+    name: "Intro to Rust",
+    description: "Build reliable backend systems with Rust fundamentals and web APIs.",
+    curriculum: [
+      "Rust syntax, ownership, and borrowing",
+      "Error handling, traits, and generics",
+      "Building HTTP APIs with Axum",
+      "Data persistence with SQLx",
+      "Authentication and deployment basics",
+    ],
+  },
+  {
+    slug: "intro-to-blockchain-using-solidity",
+    name: "Intro to Blockchain using Solidity",
+    description: "Learn smart contract fundamentals and EVM development workflows.",
+    curriculum: [
+      "Blockchain and Ethereum fundamentals",
+      "Solidity language basics and data types",
+      "Writing and testing smart contracts",
+      "Security pitfalls and best practices",
+      "Deploying contracts and interacting from frontend apps",
+    ],
+  },
+  {
+    slug: "design-basics",
+    name: "Design Basics",
+    description: "Build visual communication and interface design fundamentals.",
+    curriculum: [
+      "Design principles and hierarchy",
+      "Typography, color, and spacing systems",
+      "Wireframing and component thinking",
+      "Responsive layout foundations",
+      "Portfolio-ready design critique process",
+    ],
+  },
+  {
+    slug: "intro-to-starknet-using-cairo",
+    name: "Intro to Starknet using Cairo",
+    description: "Get started with Cairo and Starknet smart contract development.",
+    curriculum: [
+      "Starknet architecture and account abstraction",
+      "Cairo syntax and contract structure",
+      "Contract storage, events, and functions",
+      "Testing and local deployment workflow",
+      "Building and integrating with Starknet dApps",
+    ],
+  },
+  {
+    slug: "video-editing-basics",
+    name: "Video Editing Basics",
+    description: "Learn practical editing workflows for social and long-form content.",
+    curriculum: [
+      "Editing workflow and project setup",
+      "Cuts, pacing, and visual storytelling",
+      "Audio cleanup and mixing essentials",
+      "Transitions, titles, and motion basics",
+      "Export settings for web and social channels",
+    ],
+  },
+  {
+    slug: "rust-for-bitcoin",
+    name: "Rust for Bitcoin",
+    description: "Use Rust to build Bitcoin-focused tools and applications.",
+    curriculum: [
+      "Bitcoin protocol fundamentals",
+      "Working with Rust Bitcoin libraries",
+      "Transaction parsing and script basics",
+      "Wallet integrations and signing flow",
+      "Building secure Bitcoin utilities",
+    ],
+  },
+];
