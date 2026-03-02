@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { cn } from "@/lib/utils/cn";
 
 export interface ModalProps {
@@ -13,7 +13,7 @@ export interface ModalProps {
 
 export function Modal({ isOpen, onClose, title, children, footer }: Readonly<ModalProps>) {
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const titleId = "modal-title";
+  const titleId = useId();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -58,23 +58,29 @@ export function Modal({ isOpen, onClose, title, children, footer }: Readonly<Mod
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/80 p-4 transition duration-150"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 backdrop-blur-sm transition duration-150"
       onClick={onClose}
       aria-hidden="true"
     >
-      <div
-        ref={modalRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
-        className={cn("w-full max-w-xl border border-border bg-surface p-6 shadow-modal transition duration-150")}
-        onClick={(event) => event.stopPropagation()}
-      >
-        <h2 id={titleId} className="text-h2 text-foreground">
-          {title}
-        </h2>
-        <div className="mt-4 text-body text-foreground">{children}</div>
-        {footer ? <footer className="mt-6">{footer}</footer> : null}
+      <div className="relative w-full max-w-xl">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 border border-black bg-black"
+        />
+        <div
+          ref={modalRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
+          className={cn("relative z-10 w-full border border-black bg-white p-6 text-black shadow-none transition duration-150")}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <h2 id={titleId} className="text-h2 text-black">
+            {title}
+          </h2>
+          <div className="mt-4 text-body text-black">{children}</div>
+          {footer ? <footer className="mt-6">{footer}</footer> : null}
+        </div>
       </div>
     </div>
   );

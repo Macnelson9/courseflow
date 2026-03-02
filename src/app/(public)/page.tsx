@@ -16,8 +16,8 @@ export default function LandingPage() {
           <Link href="/apply">
             <Button variant="secondary" className="home-btn-accent mb-3 mr-3" data-no-gsap="true">Apply Now</Button>
           </Link>
-          <Link href="/login?role=student">
-            <Button variant="secondary" className="home-btn-accent mb-3 mr-3" data-no-gsap="true">Student Login</Button>
+          <Link href="/login">
+            <Button variant="secondary" className="home-btn-accent mb-3 mr-3" data-no-gsap="true">Login</Button>
           </Link>
         </div>
       </section>
