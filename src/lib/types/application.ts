@@ -1,4 +1,10 @@
-export type ApplicationStatus = "submitted" | "pending" | "accepted" | "rejected";
+export type ApplicationStatus =
+  | "submitted"
+  | "pending"
+  | "interview_invited"
+  | "waitlisted"
+  | "accepted"
+  | "rejected";
 
 export interface Application {
   id: string;
@@ -7,6 +13,8 @@ export interface Application {
   phone: string;
   motivation: string;
   experience: string;
+  selectedCourse?: string;
   status: ApplicationStatus;
   createdAt: string;
+  interviewDate?: string;
 }

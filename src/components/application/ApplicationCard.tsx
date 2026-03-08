@@ -10,21 +10,42 @@ export interface ApplicationCardProps {
   onReject: () => Promise<void>;
 }
 
-export function ApplicationCard({ application, onAccept, onReject }: Readonly<ApplicationCardProps>) {
-  const actioned = application.status === "accepted" || application.status === "rejected";
+export function ApplicationCard({
+  application,
+  onAccept,
+  onReject,
+}: Readonly<ApplicationCardProps>) {
+  const actioned =
+    application.status === "accepted" || application.status === "rejected";
 
   return (
     <Card
       title={application.fullName}
-      description={`${application.email} · ${application.phone}`}
+      description={`${application.email} · ${application.phone}${application.selectedCourse ? ` · ${application.selectedCourse}` : ""}`}
       action={<ApplicationStatusBadge status={application.status} />}
       headerTone="inverse"
     >
-      <p className="line-clamp-3 font-mono text-caption text-muted">{application.motivation}</p>
-      <p className="mt-2 line-clamp-2 font-mono text-caption text-muted">{application.experience}</p>
-      <p className="mt-2 font-mono text-caption text-muted">Applied: {formatDate(application.createdAt)}</p>
+      <p className="line-clamp-3 font-mono text-caption text-muted">
+        {application.motivation}
+      </p>
+      <p className="mt-2 line-clamp-2 font-mono text-caption text-muted">
+        {application.experience}
+      </p>
+      <p className="mt-2 font-mono text-caption text-muted">
+        Applied: {formatDate(application.createdAt)}
+      </p>
+      {application.interviewDate ? (
+        <p className="mt-1 font-mono text-caption text-muted">
+          Interview: {application.interviewDate}
+        </p>
+      ) : null}
       <div className="mt-4">
-        <ApplicationActions studentName={application.fullName} disabled={actioned} onAccept={onAccept} onReject={onReject} />
+        <ApplicationActions
+          studentName={application.fullName}
+          disabled={actioned}
+          onAccept={onAccept}
+          onReject={onReject}
+        />
       </div>
     </Card>
   );

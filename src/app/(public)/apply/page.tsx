@@ -18,7 +18,8 @@ export default function ApplyPage() {
         <article className="border border-border bg-surface p-5 md:p-6">
           <h2 className="text-h3 text-foreground">Student Application Form</h2>
           <p className="mt-2 font-mono text-caption text-muted">
-            Complete all required fields. Once accepted, you&apos;ll get dashboard access and attendance tools.
+            Complete all required fields. Once accepted, you&apos;ll get
+            dashboard access and attendance tools.
           </p>
           <div className="mt-5">
             <ApplicationForm onSubmit={async () => router.prefetch("/login")} />
@@ -27,17 +28,38 @@ export default function ApplyPage() {
 
         <aside className="space-y-4">
           <section className="border border-border bg-surface p-5">
-            <h3 className="font-mono text-label uppercase text-foreground">What Happens Next</h3>
+            <h3 className="font-mono text-label uppercase text-foreground">
+              What Happens Next
+            </h3>
             <ol className="mt-3 space-y-2 font-mono text-caption text-muted">
-              <li>01 • You receive confirmation email after submission.</li>
-              <li>02 • Admin reviews and marks Accepted or Rejected.</li>
-              <li>03 • Accepted students receive dashboard login link.</li>
-              <li>04 • Attend classes and sign attendance via QR.</li>
+              <li>01 • Your application is reviewed by admin.</li>
+              <li>
+                02 • If you meet the initial criteria, you receive an interview
+                invite via email.
+              </li>
+              <li>
+                03 • Invited applicants are placed on a general waitlist for
+                cohort placement.
+              </li>
+              <li>
+                04 • Interview is conducted; selected applicants receive an
+                acceptance email with login credentials.
+              </li>
+              <li>
+                05 • Use your email and default password to log in, then change
+                your password.
+              </li>
+              <li>
+                06 • Attend classes and sign attendance via QR code on your
+                dashboard.
+              </li>
             </ol>
           </section>
 
           <section className="border border-border bg-surface p-5">
-            <h3 className="font-mono text-label uppercase text-foreground">Application Fields</h3>
+            <h3 className="font-mono text-label uppercase text-foreground">
+              Application Fields
+            </h3>
             <ul className="mt-3 space-y-2 font-mono text-caption text-muted">
               <li>• Full Name</li>
               <li>• Email Address</li>

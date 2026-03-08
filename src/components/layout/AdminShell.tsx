@@ -1,6 +1,14 @@
 "use client";
 
-import { ClipboardList, CalendarCheck2, BookOpen, Home, UsersRound, UserCheck } from "lucide-react";
+import {
+  ClipboardList,
+  CalendarCheck2,
+  BookOpen,
+  Home,
+  UsersRound,
+  UserCheck,
+  UserCircle,
+} from "lucide-react";
 import { Shell } from "@/components/layout/Shell";
 
 const adminNav = [
@@ -10,9 +18,12 @@ const adminNav = [
   { label: "Attendance", href: "/admin/attendance", icon: CalendarCheck2 },
   { label: "Course", href: "/admin/course", icon: BookOpen },
   { label: "Mentors", href: "/admin/mentors", icon: UsersRound },
+  { label: "Profile", href: "/admin/profile", icon: UserCircle },
 ];
 
-export function AdminShell({ children }: Readonly<{ children: React.ReactNode }>) {
+export function AdminShell({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <Shell
       title="Admin Dashboard"

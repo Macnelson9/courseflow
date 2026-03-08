@@ -37,7 +37,8 @@ export default function AdminAcceptancePage() {
   );
 
   const filtered = useMemo(
-    () => acceptancePool.filter((a) => filter === "all" || a.status === filter),
+    () =>
+      acceptancePool.filter((a) => filter === "all" || a.status === filter),
     [acceptancePool, filter],
   );
 

@@ -33,7 +33,7 @@ export default function LandingPage() {
 
         <section className="grid gap-4 md:grid-cols-3">
           <article className="border border-border bg-surface p-5">
-            <p className="font-mono text-caption uppercase text-muted">01 • Apply</p>
+            <p className="font-mono text-caption uppercase text-muted font-semibold">01 • Apply</p>
             <h3 className="mt-2 text-h3 text-foreground">Submit your profile</h3>
             <p className="mt-2 font-mono text-caption text-muted">
               Fill in motivation and prior experience. You&apos;ll get an email confirmation.
@@ -41,7 +41,7 @@ export default function LandingPage() {
           </article>
 
           <article className="border border-border bg-surface p-5">
-            <p className="font-mono text-caption uppercase text-muted">02 • Get Reviewed</p>
+            <p className="font-mono text-caption uppercase text-muted font-semibold">02 • Get Reviewed</p>
             <h3 className="mt-2 text-h3 text-foreground">Admin decision</h3>
             <p className="mt-2 font-mono text-caption text-muted">
               Admins review and mark your application accepted or rejected.
@@ -49,7 +49,7 @@ export default function LandingPage() {
           </article>
 
           <article className="border border-border bg-surface p-5">
-            <p className="font-mono text-caption uppercase text-muted">03 • Join Classes</p>
+            <p className="font-mono text-caption uppercase text-muted font-semibold">03 • Join Classes</p>
             <h3 className="mt-2 text-h3 text-foreground">Track attendance</h3>
             <p className="mt-2 font-mono text-caption text-muted">
               Accepted students get dashboard access, assignments, and QR attendance sign-in.

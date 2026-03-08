@@ -98,6 +98,7 @@ export function ApplicationForm({ onSubmit }: Readonly<ApplicationFormProps>) {
           <option value="Intro to Starknet using Cairo">Intro to Starknet using Cairo</option>
           <option value="Video Editing Basics">Video Editing Basics</option>
           <option value="Rust for Bitcoin">Rust for Bitcoin</option>
+          <option value="Product Management">Product Management</option>
         </select>
         {fieldErrors.selectedCourse ? (
           <p id="selectedCourse-error" className="font-mono text-caption text-foreground" role="alert">

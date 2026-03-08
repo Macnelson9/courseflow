@@ -13,7 +13,10 @@ export interface QRCodeDisplayProps {
   sessionActive: boolean;
 }
 
-export function QRCodeDisplay({ studentId, sessionActive }: Readonly<QRCodeDisplayProps>) {
+export function QRCodeDisplay({
+  studentId,
+  sessionActive,
+}: Readonly<QRCodeDisplayProps>) {
   const [secondsBase, setSecondsBase] = useState(120);
 
   const fetchQRToken = useCallback(async () => {
@@ -32,20 +35,31 @@ export function QRCodeDisplay({ studentId, sessionActive }: Readonly<QRCodeDispl
 
   const progress = useMemo(() => {
     if (secondsBase <= 0) return 0;
-    return Math.max(0, Math.min(100, Math.round((seconds / secondsBase) * 100)));
+    return Math.max(
+      0,
+      Math.min(100, Math.round((seconds / secondsBase) * 100)),
+    );
   }, [seconds, secondsBase]);
 
   if (!sessionActive) {
     return (
       <Card title="Attendance QR">
-        <p className="font-mono text-body text-muted">No attendance session is open today.</p>
+        <p className="font-mono text-body text-muted">
+          No attendance session is open today.
+        </p>
       </Card>
     );
   }
 
   return (
-    <Card title="Attendance QR" description="Refreshes every 2 minutes" aria-busy={loading}>
-      {error ? <p className="font-mono text-caption text-foreground">{error}</p> : null}
+    <Card
+      title="Attendance QR"
+      description="Refreshes every 2 minutes"
+      aria-busy={loading}
+    >
+      {error ? (
+        <p className="font-mono text-caption text-foreground">{error}</p>
+      ) : null}
       {token ? (
         <div className="space-y-4">
           <QRCodeSVG
@@ -57,19 +71,30 @@ export function QRCodeDisplay({ studentId, sessionActive }: Readonly<QRCodeDispl
           />
           <div>
             <div className="h-2 w-full border border-border bg-background">
-              <div className="h-full bg-primary" style={{ width: `${progress}%` }} />
+              <div
+                className="h-full bg-primary"
+                style={{ width: `${progress}%` }}
+              />
             </div>
             <p className="mt-2 font-mono text-caption text-muted">
-              Refreshes in {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}
+              Refreshes in {Math.floor(seconds / 60)}:
+              {String(seconds % 60).padStart(2, "0")}
             </p>
           </div>
         </div>
       ) : null}
       <div className="mt-4 flex items-center gap-4 font-mono text-caption">
-        <button type="button" onClick={() => void refresh()} className="underline-offset-2 hover:underline">
+        <button
+          type="button"
+          onClick={() => void refresh()}
+          className="underline-offset-2 hover:underline"
+        >
           Refresh now
         </button>
-        <Link href="/dashboard/attendance#manual" className="underline-offset-2 hover:underline">
+        <Link
+          href="/student/attendance#manual"
+          className="underline-offset-2 hover:underline"
+        >
           Having trouble?
         </Link>
       </div>
