@@ -1,5 +1,8 @@
 import type { Application } from "@/lib/types/application";
-import type { AttendanceRecord, AttendanceSession } from "@/lib/types/attendance";
+import type {
+  AttendanceRecord,
+  AttendanceSession,
+} from "@/lib/types/attendance";
 import type { Course } from "@/lib/types/course";
 import type { Mentor } from "@/lib/types/mentor";
 import type { Classmate } from "@/lib/types/student";
@@ -14,7 +17,8 @@ export interface CourseCatalogItem {
 export const sampleCourse: Course = {
   id: "course-1",
   name: "Intro to Rust",
-  description: "Build real backend systems with Rust, Axum, SQLx, and JWT auth.",
+  description:
+    "Build real backend systems with Rust, Axum, SQLx, and JWT auth.",
   startDate: "2026-03-02",
   endDate: "2026-06-12",
   schedule: "Mon / Wed / Fri · 10:00 – 12:00",
@@ -28,21 +32,69 @@ export const sampleCourse: Course = {
     { id: "m3", label: "SQLx Migration Guide", url: "#" },
   ],
   assignments: [
-    { id: "a1", title: "Enrollment Endpoint", brief: "Build CRUD for student enrollment.", dueDate: "2026-03-12", prInstructions: "Open PR against cohort repo." },
-    { id: "a2", title: "Attendance Token Validator", brief: "Validate exp and single-use claims.", dueDate: "2026-03-18", prInstructions: "Submit PR with tests and screenshots." },
+    {
+      id: "a1",
+      title: "Enrollment Endpoint",
+      brief: "Build CRUD for student enrollment.",
+      dueDate: "2026-03-12",
+      prInstructions: "Open PR against cohort repo.",
+    },
+    {
+      id: "a2",
+      title: "Attendance Token Validator",
+      brief: "Validate exp and single-use claims.",
+      dueDate: "2026-03-18",
+      prInstructions: "Submit PR with tests and screenshots.",
+    },
   ],
 };
 
 export const sampleMentors: Mentor[] = [
-  { id: "mn1", name: "Ada N.", expertise: "Systems Programming", contact: "ada@courseflow.dev" },
-  { id: "mn2", name: "Ken U.", expertise: "Web APIs", contact: "ken@courseflow.dev" },
-  { id: "mn3", name: "Rita M.", expertise: "Database Architecture", contact: "rita@courseflow.dev" },
+  {
+    id: "mn1",
+    name: "Ada N.",
+    email: "ada@courseflow.dev",
+    expertise: "Systems Programming",
+    contact: "ada@courseflow.dev",
+    assignedCourse: "Intro to Rust",
+  },
+  {
+    id: "mn2",
+    name: "Ken U.",
+    email: "ken@courseflow.dev",
+    expertise: "Web APIs",
+    contact: "ken@courseflow.dev",
+    assignedCourse: "Intro to Blockchain using Solidity",
+  },
+  {
+    id: "mn3",
+    name: "Rita M.",
+    email: "rita@courseflow.dev",
+    expertise: "Database Architecture",
+    contact: "rita@courseflow.dev",
+    assignedCourse: "Design Basics",
+  },
 ];
 
 export const sampleClassmates: Classmate[] = [
-  { id: "st1", name: "Aisha Bello", email: "aisha@example.com", phone: "+234-111-000-001" },
-  { id: "st2", name: "David Kim", email: "david@example.com", phone: "+234-111-000-002" },
-  { id: "st3", name: "Mina Park", email: "mina@example.com", phone: "+234-111-000-003" },
+  {
+    id: "st1",
+    name: "Aisha Bello",
+    email: "aisha@example.com",
+    phone: "+234-111-000-001",
+  },
+  {
+    id: "st2",
+    name: "David Kim",
+    email: "david@example.com",
+    phone: "+234-111-000-002",
+  },
+  {
+    id: "st3",
+    name: "Mina Park",
+    email: "mina@example.com",
+    phone: "+234-111-000-003",
+  },
 ];
 
 export const sampleApplications: Application[] = [
@@ -51,9 +103,11 @@ export const sampleApplications: Application[] = [
     fullName: "Aisha Bello",
     email: "aisha@example.com",
     phone: "+234-111-000-001",
-    motivation: "I want practical backend mentoring and industry-ready Rust skills.",
+    motivation:
+      "I want practical backend mentoring and industry-ready Rust skills.",
     experience: "Intermediate TypeScript, basic Rust, one internship.",
-    status: "pending",
+    selectedCourse: "Intro to Rust",
+    status: "submitted",
     createdAt: "2026-02-27",
   },
   {
@@ -63,8 +117,10 @@ export const sampleApplications: Application[] = [
     phone: "+234-111-000-010",
     motivation: "I want to transition to systems-level backend engineering.",
     experience: "Node.js API work, beginner Rust, no production Rust yet.",
-    status: "submitted",
+    selectedCourse: "Intro to Rust",
+    status: "interview_invited",
     createdAt: "2026-02-26",
+    interviewDate: "2026-03-10",
   },
   {
     id: "app-3",
@@ -73,14 +129,49 @@ export const sampleApplications: Application[] = [
     phone: "+234-111-000-016",
     motivation: "Looking for deeper architecture knowledge and real projects.",
     experience: "3 years backend engineering with Go and Python.",
+    selectedCourse: "Intro to Rust",
     status: "accepted",
     createdAt: "2026-02-24",
+  },
+  {
+    id: "app-4",
+    fullName: "David Kim",
+    email: "david@example.com",
+    phone: "+234-111-000-002",
+    motivation:
+      "Want to learn systems programming and blockchain fundamentals.",
+    experience: "2 years frontend with React, some backend Node.js.",
+    selectedCourse: "Intro to Blockchain using Solidity",
+    status: "waitlisted",
+    createdAt: "2026-02-25",
+  },
+  {
+    id: "app-5",
+    fullName: "Mina Park",
+    email: "mina@example.com",
+    phone: "+234-111-000-003",
+    motivation:
+      "I want to build decentralized applications and smart contracts.",
+    experience: "1 year backend development with Python, basic Solidity.",
+    selectedCourse: "Intro to Starknet using Cairo",
+    status: "rejected",
+    createdAt: "2026-02-23",
   },
 ];
 
 export const sampleAttendanceHistory: AttendanceRecord[] = [
-  { id: "r1", date: "2026-02-21", status: "present", checkedInAt: "2026-02-21T09:58:00Z" },
-  { id: "r2", date: "2026-02-24", status: "present", checkedInAt: "2026-02-24T10:04:00Z" },
+  {
+    id: "r1",
+    date: "2026-02-21",
+    status: "present",
+    checkedInAt: "2026-02-21T09:58:00Z",
+  },
+  {
+    id: "r2",
+    date: "2026-02-24",
+    status: "present",
+    checkedInAt: "2026-02-24T10:04:00Z",
+  },
   { id: "r3", date: "2026-02-26", status: "absent" },
 ];
 
@@ -92,9 +183,26 @@ export const sampleAttendanceSession: AttendanceSession = {
   absentCount: 0,
   pendingCount: 5,
   records: [
-    { studentId: "st1", name: "Mina Park", email: "mina@example.com", status: "present", checkedInAt: "10:06 AM" },
-    { studentId: "st2", name: "Tobi Ade", email: "tobi@example.com", status: "pending" },
-    { studentId: "st3", name: "Nora Lin", email: "nora@example.com", status: "present", checkedInAt: "10:09 AM" },
+    {
+      studentId: "st1",
+      name: "Mina Park",
+      email: "mina@example.com",
+      status: "present",
+      checkedInAt: "10:06 AM",
+    },
+    {
+      studentId: "st2",
+      name: "Tobi Ade",
+      email: "tobi@example.com",
+      status: "pending",
+    },
+    {
+      studentId: "st3",
+      name: "Nora Lin",
+      email: "nora@example.com",
+      status: "present",
+      checkedInAt: "10:09 AM",
+    },
   ],
 };
 
@@ -102,7 +210,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "intro-to-rust",
     name: "Intro to Rust",
-    description: "Build reliable backend systems with Rust fundamentals and web APIs.",
+    description:
+      "Build reliable backend systems with Rust fundamentals and web APIs.",
     curriculum: [
       "Rust syntax, ownership, and borrowing",
       "Error handling, traits, and generics",
@@ -114,7 +223,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "intro-to-blockchain-using-solidity",
     name: "Intro to Blockchain using Solidity",
-    description: "Learn smart contract fundamentals and EVM development workflows.",
+    description:
+      "Learn smart contract fundamentals and EVM development workflows.",
     curriculum: [
       "Blockchain and Ethereum fundamentals",
       "Solidity language basics and data types",
@@ -126,7 +236,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "design-basics",
     name: "Design Basics",
-    description: "Build visual communication and interface design fundamentals.",
+    description:
+      "Build visual communication and interface design fundamentals.",
     curriculum: [
       "Design principles and hierarchy",
       "Typography, color, and spacing systems",
@@ -138,7 +249,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "intro-to-starknet-using-cairo",
     name: "Intro to Starknet using Cairo",
-    description: "Get started with Cairo and Starknet smart contract development.",
+    description:
+      "Get started with Cairo and Starknet smart contract development.",
     curriculum: [
       "Starknet architecture and account abstraction",
       "Cairo syntax and contract structure",
@@ -150,7 +262,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "video-editing-basics",
     name: "Video Editing Basics",
-    description: "Learn practical editing workflows for social and long-form content.",
+    description:
+      "Learn practical editing workflows for social and long-form content.",
     curriculum: [
       "Editing workflow and project setup",
       "Cuts, pacing, and visual storytelling",
@@ -174,7 +287,8 @@ export const availableCourses: CourseCatalogItem[] = [
   {
     slug: "product-management",
     name: "Product Management",
-    description: "Learn how to discover user needs, define product strategy, and ship impactful products.",
+    description:
+      "Learn how to discover user needs, define product strategy, and ship impactful products.",
     curriculum: [
       "Product thinking and problem framing",
       "User research and insight synthesis",

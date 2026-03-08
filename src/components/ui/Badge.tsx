@@ -1,6 +1,13 @@
 import { cn } from "@/lib/utils/cn";
 
-type BadgeVariant = "default" | "active" | "success" | "warning" | "destructive" | "outline";
+type BadgeVariant =
+  | "default"
+  | "active"
+  | "success"
+  | "warning"
+  | "destructive"
+  | "outline"
+  | "info";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
@@ -13,9 +20,14 @@ const variants: Record<BadgeVariant, string> = {
   warning: "bg-secondary text-foreground border-border",
   destructive: "bg-foreground text-inverse-fg border-foreground",
   outline: "bg-transparent text-foreground border-border",
+  info: "bg-surface text-foreground border-foreground",
 };
 
-export function Badge({ className, variant = "default", ...props }: Readonly<BadgeProps>) {
+export function Badge({
+  className,
+  variant = "default",
+  ...props
+}: Readonly<BadgeProps>) {
   return (
     <span
       role="status"

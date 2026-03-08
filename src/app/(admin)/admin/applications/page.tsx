@@ -11,7 +11,9 @@ import { Toast } from "@/components/ui/Toast";
 
 const filters: Array<{ label: string; value: "all" | ApplicationStatus }> = [
   { label: "All", value: "all" },
-  { label: "Pending", value: "pending" },
+  { label: "Submitted", value: "submitted" },
+  { label: "Interview Invited", value: "interview_invited" },
+  { label: "Waitlisted", value: "waitlisted" },
   { label: "Accepted", value: "accepted" },
   { label: "Rejected", value: "rejected" },
 ];
@@ -21,7 +23,10 @@ export default function AdminApplicationsPage() {
   const { toasts, push, remove } = useToast();
 
   const applications = useMemo(
-    () => sampleApplications.filter((application) => (status === "all" ? true : application.status === status)),
+    () =>
+      sampleApplications.filter((application) =>
+        status === "all" ? true : application.status === status,
+      ),
     [status],
   );
 
@@ -29,7 +34,7 @@ export default function AdminApplicationsPage() {
     <div className="space-y-6">
       <PageHeader
         title="Applications"
-        subtitle={`${sampleApplications.length} total · ${sampleApplications.filter((item) => item.status === "pending" || item.status === "submitted").length} pending`}
+        subtitle={`${sampleApplications.length} total · ${sampleApplications.filter((item) => item.status === "submitted").length} new · ${sampleApplications.filter((item) => item.status === "interview_invited").length} interview invited · ${sampleApplications.filter((item) => item.status === "waitlisted").length} waitlisted`}
       />
       <div className="flex flex-wrap gap-2">
         {filters.map((filter) => (

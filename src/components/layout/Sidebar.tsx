@@ -56,7 +56,12 @@ export function Sidebar({
         collapsible && !collapsed ? "w-60" : "w-20",
       )}
     >
-      <div className={cn("flex h-20 items-center px-3", collapsible && !collapsed ? "justify-between" : "justify-center")}>
+      <div
+        className={cn(
+          "flex h-20 items-center px-3",
+          collapsible && !collapsed ? "justify-between" : "justify-center",
+        )}
+      >
         <Link
           href={homeHref}
           aria-hidden={collapsed}
@@ -78,15 +83,20 @@ export function Sidebar({
             className="stack-btn-inverse inline-flex min-h-11 min-w-11 items-center justify-center border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             data-no-gsap="true"
           >
-            {collapsed ? <ChevronRight className="h-4 w-4" aria-hidden="true" /> : <ChevronLeft className="h-4 w-4" aria-hidden="true" />}
+            {collapsed ? (
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+            )}
           </button>
         ) : null}
       </div>
       <nav className="flex-1 space-y-5 p-3" aria-label="Sidebar navigation">
         {navItems.map((item) => {
-          const active = item.match === "exact"
-            ? pathname === item.href
-            : pathname === item.href || pathname.startsWith(`${item.href}/`);
+          const active =
+            item.match === "exact"
+              ? pathname === item.href
+              : pathname === item.href || pathname.startsWith(`${item.href}/`);
           const Icon = item.icon;
           return (
             <Link
@@ -105,7 +115,9 @@ export function Sidebar({
                 aria-hidden={collapsible && collapsed}
                 className={cn(
                   "truncate whitespace-nowrap transition-all duration-200 ease-in-out",
-                  collapsible && collapsed ? "w-0 opacity-0" : "w-auto opacity-100",
+                  collapsible && collapsed
+                    ? "w-0 opacity-0"
+                    : "w-auto opacity-100",
                 )}
               >
                 {item.label}
@@ -114,11 +126,6 @@ export function Sidebar({
           );
         })}
       </nav>
-      <div className="p-3">
-        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center border border-surface bg-surface font-mono text-body text-foreground">
-          {initials}
-        </div>
-      </div>
     </aside>
   );
 }

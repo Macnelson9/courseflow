@@ -1,6 +1,13 @@
 "use client";
 
-import { BookOpen, CalendarCheck2, FileText, Home, Users } from "lucide-react";
+import {
+  BookOpen,
+  CalendarCheck2,
+  FileText,
+  Home,
+  Users,
+  UserCircle,
+} from "lucide-react";
 import { Shell } from "@/components/layout/Shell";
 
 const mentorNav = [
@@ -9,9 +16,12 @@ const mentorNav = [
   { label: "Students", href: "/mentor/students", icon: Users },
   { label: "Attendance", href: "/mentor/attendance", icon: CalendarCheck2 },
   { label: "Content", href: "/mentor/content", icon: FileText },
+  { label: "Profile", href: "/mentor/profile", icon: UserCircle },
 ];
 
-export function MentorShell({ children }: Readonly<{ children: React.ReactNode }>) {
+export function MentorShell({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <Shell
       title="Mentor Dashboard"

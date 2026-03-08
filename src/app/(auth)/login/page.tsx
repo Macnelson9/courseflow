@@ -11,7 +11,13 @@ import { Button } from "@/components/ui/Button";
 
 export default function StudentLoginPage() {
   return (
-    <Suspense fallback={<AuthCard><p className="font-mono text-caption text-muted">Loading login...</p></AuthCard>}>
+    <Suspense
+      fallback={
+        <AuthCard>
+          <p className="font-mono text-caption text-muted">Loading login...</p>
+        </AuthCard>
+      }
+    >
       <LoginContent />
     </Suspense>
   );
@@ -23,7 +29,8 @@ function LoginContent() {
   const router = useRouter();
   const params = useSearchParams();
   const paramRole = params.get("role");
-  const role = paramRole === "admin" || paramRole === "mentor" ? paramRole : "student";
+  const role =
+    paramRole === "admin" || paramRole === "mentor" ? paramRole : "student";
 
   async function handleSubmit(email: string, password: string): Promise<void> {
     setLoading(true);
@@ -40,7 +47,7 @@ function LoginContent() {
       } else if (role === "mentor") {
         router.push("/mentor");
       } else {
-        router.push("/dashboard");
+        router.push("/student");
       }
     } catch {
       setError("Unable to sign in. Try again.");
@@ -53,17 +60,26 @@ function LoginContent() {
     <AuthCard className="max-w-[520px]">
       <div className="flex gap-2">
         <Link href="/login?role=student" className="flex-1">
-          <Button variant={role === "student" ? "primary" : "secondary"} className="w-full">
+          <Button
+            variant={role === "student" ? "primary" : "secondary"}
+            className="w-full"
+          >
             Student Login
           </Button>
         </Link>
         <Link href="/login?role=mentor" className="flex-1">
-          <Button variant={role === "mentor" ? "primary" : "secondary"} className="w-full">
+          <Button
+            variant={role === "mentor" ? "primary" : "secondary"}
+            className="w-full"
+          >
             Mentor Login
           </Button>
         </Link>
         <Link href="/login?role=admin" className="flex-1">
-          <Button variant={role === "admin" ? "primary" : "secondary"} className="w-full">
+          <Button
+            variant={role === "admin" ? "primary" : "secondary"}
+            className="w-full"
+          >
             Admin Login
           </Button>
         </Link>
@@ -71,16 +87,22 @@ function LoginContent() {
 
       <AuthHeader
         title={
-          role === "admin" ? "Admin Sign In" : role === "mentor" ? "Mentor Sign In" : "Student Sign In"
+          role === "admin"
+            ? "Admin Sign In"
+            : role === "mentor"
+              ? "Mentor Sign In"
+              : "Student Sign In"
         }
         subtitle={
           role === "admin"
             ? "Review applications, accept students, and control attendance sessions."
             : role === "mentor"
               ? "View assigned courses, students, attendance, and upload course content."
-            : "Access your dashboard, attendance QR, assignments, and class updates."
+              : "Access your dashboard, attendance QR, assignments, and class updates."
         }
-        {...(role === "admin" || role === "mentor" ? { adminLabel: "Restricted Access" } : {})}
+        {...(role === "admin" || role === "mentor"
+          ? { adminLabel: "Restricted Access" }
+          : {})}
       />
 
       <div className="space-y-3 border border-border bg-background p-4 font-mono text-caption text-muted">
@@ -98,13 +120,27 @@ function LoginContent() {
         onSubmit={handleSubmit}
         isLoading={loading}
         error={error}
-        submitLabel={role === "admin" ? "Sign In as Admin" : role === "mentor" ? "Sign In as Mentor" : "Sign In"}
+        submitLabel={
+          role === "admin"
+            ? "Sign In as Admin"
+            : role === "mentor"
+              ? "Sign In as Mentor"
+              : "Sign In"
+        }
       />
 
       {role === "admin" || role === "mentor" ? (
-        <AuthFooter prompt="Need student access?" linkLabel="Use student login" href="/login?role=student" />
+        <AuthFooter
+          prompt="Need student access?"
+          linkLabel="Use student login"
+          href="/login?role=student"
+        />
       ) : (
-        <AuthFooter prompt="First time here?" linkLabel="Start with welcome" href="/#welcome-section" />
+        <AuthFooter
+          prompt="First time here?"
+          linkLabel="Start with welcome"
+          href="/#welcome-section"
+        />
       )}
 
       <div className="text-center font-mono text-caption text-muted">
