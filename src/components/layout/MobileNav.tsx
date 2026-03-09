@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Home, Menu, X } from "lucide-react";
 import { gsap } from "gsap";
 import type { LucideIcon } from "lucide-react";
+import { DashboardLogoutButton } from "@/components/layout/DashboardLogoutButton";
 import { cn } from "@/lib/utils/cn";
 
 export interface MobileNavItem {
@@ -21,6 +22,12 @@ export interface MobileNavProps {
 
 export function MobileNav({ items }: Readonly<MobileNavProps>) {
   const pathname = usePathname();
+  const loginHref =
+    pathname.startsWith("/admin")
+      ? "/login?role=admin"
+      : pathname.startsWith("/mentor")
+        ? "/login?role=mentor"
+        : "/login?role=student";
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const backdropRef = useRef<HTMLDivElement | null>(null);
@@ -120,6 +127,7 @@ export function MobileNav({ items }: Readonly<MobileNavProps>) {
             );
           })}
         </div>
+        <DashboardLogoutButton loginHref={loginHref} className="mt-auto w-full justify-start px-4 tracking-[0.08em]" />
       </aside>
     </>
   );

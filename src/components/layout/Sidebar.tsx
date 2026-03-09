@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { DashboardLogoutButton } from "@/components/layout/DashboardLogoutButton";
 import { cn } from "@/lib/utils/cn";
 
 export interface NavItem {
@@ -30,6 +31,12 @@ export function Sidebar({
   collapsible = false,
   homeHref = "/",
 }: Readonly<SidebarProps>) {
+  const loginHref = useMemo(() => {
+    if (pathname.startsWith("/admin")) return "/login?role=admin";
+    if (pathname.startsWith("/mentor")) return "/login?role=mentor";
+    return "/login?role=student";
+  }, [pathname]);
+
   const initials = useMemo(() => {
     if (pathname.startsWith("/admin")) return "AD";
     if (pathname.startsWith("/mentor")) return "MT";
@@ -126,6 +133,13 @@ export function Sidebar({
           );
         })}
       </nav>
+      <div className="p-3 pt-0">
+        <DashboardLogoutButton
+          loginHref={loginHref}
+          iconOnly={collapsible && collapsed}
+          className={cn("w-full", collapsible && !collapsed ? "justify-start" : "justify-center")}
+        />
+      </div>
     </aside>
   );
 }
