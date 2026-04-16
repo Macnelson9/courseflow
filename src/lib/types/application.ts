@@ -1,20 +1,16 @@
-export type ApplicationStatus =
-  | "submitted"
-  | "pending"
-  | "interview_invited"
-  | "waitlisted"
-  | "accepted"
-  | "rejected";
+export type ApplicationStatus = "pending" | "accepted" | "rejected" | "interview_invited" | "waitlisted";
 
 export interface Application {
   id: string;
-  fullName: string;
+  course_id: string;
+  course_name: string;
   email: string;
-  phone: string;
+  first_name: string;
+  last_name: string;
   motivation: string;
   experience: string;
-  selectedCourse?: string;
   status: ApplicationStatus;
-  createdAt: string;
-  interviewDate?: string;
+  created_at: string;
+  reviewed_at: string | null;
+  reviewed_by: string | null;
 }

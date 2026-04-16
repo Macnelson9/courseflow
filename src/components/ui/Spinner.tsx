@@ -8,7 +8,7 @@ export function Spinner({ className }: Readonly<SpinnerProps>) {
   return (
     <span
       aria-hidden="true"
-      className={cn("inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent", className)}
+      className={cn("spinner-icon inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent", className)}
     />
   );
 }

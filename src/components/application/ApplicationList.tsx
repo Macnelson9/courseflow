@@ -5,9 +5,10 @@ export interface ApplicationListProps {
   applications: Application[];
   onAccept: (id: string) => Promise<void>;
   onReject: (id: string) => Promise<void>;
+  onWaitlist?: (id: string) => Promise<void>;
 }
 
-export function ApplicationList({ applications, onAccept, onReject }: Readonly<ApplicationListProps>) {
+export function ApplicationList({ applications, onAccept, onReject, onWaitlist }: Readonly<ApplicationListProps>) {
   return (
     <div className="grid gap-4 md:grid-cols-2" aria-live="polite">
       {applications.map((application) => (
@@ -16,6 +17,7 @@ export function ApplicationList({ applications, onAccept, onReject }: Readonly<A
           application={application}
           onAccept={() => onAccept(application.id)}
           onReject={() => onReject(application.id)}
+          {...(onWaitlist ? { onWaitlist: () => onWaitlist(application.id) } : {})}
         />
       ))}
     </div>

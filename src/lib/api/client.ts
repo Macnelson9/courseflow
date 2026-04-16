@@ -11,6 +11,7 @@ async function apiFetch<T>(endpoint: string, options: FetchOptions = {}): Promis
     ...rest,
     headers: {
       "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": "true",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...rest.headers,
     },
@@ -36,6 +37,8 @@ export const api = {
     apiFetch<T>(endpoint, { method: "POST", body: JSON.stringify(body), ...(token ? { token } : {}) }),
   patch: <T>(endpoint: string, body: unknown, token?: string) =>
     apiFetch<T>(endpoint, { method: "PATCH", body: JSON.stringify(body), ...(token ? { token } : {}) }),
+  put: <T>(endpoint: string, body: unknown, token?: string) =>
+    apiFetch<T>(endpoint, { method: "PUT", body: JSON.stringify(body), ...(token ? { token } : {}) }),
   delete: <T>(endpoint: string, token?: string) =>
     apiFetch<T>(endpoint, { method: "DELETE", ...(token ? { token } : {}) }),
 };

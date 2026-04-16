@@ -1,24 +1,15 @@
 import { Badge } from "@/components/ui/Badge";
 import type { ApplicationStatus } from "@/lib/types/application";
 
-export interface ApplicationStatusBadgeProps {
-  status: ApplicationStatus;
-}
-
-const mapVariant: Record<
-  ApplicationStatus,
-  "warning" | "success" | "destructive" | "info"
-> = {
-  submitted: "warning",
+const mapVariant: Record<ApplicationStatus, "warning" | "success" | "destructive" | "info"> = {
   pending: "warning",
   interview_invited: "info",
-  waitlisted: "warning",
+  waitlisted: "info",
   accepted: "success",
   rejected: "destructive",
 };
 
 const labelMap: Record<ApplicationStatus, string> = {
-  submitted: "Submitted",
   pending: "Pending",
   interview_invited: "Interview Invited",
   waitlisted: "Waitlisted",
@@ -26,14 +17,9 @@ const labelMap: Record<ApplicationStatus, string> = {
   rejected: "Rejected",
 };
 
-export function ApplicationStatusBadge({
-  status,
-}: Readonly<ApplicationStatusBadgeProps>) {
+export function ApplicationStatusBadge({ status }: Readonly<{ status: ApplicationStatus }>) {
   return (
-    <Badge
-      variant={mapVariant[status]}
-      aria-label={`Application status: ${labelMap[status]}`}
-    >
+    <Badge variant={mapVariant[status]} aria-label={`Application status: ${labelMap[status]}`}>
       {labelMap[status]}
     </Badge>
   );
