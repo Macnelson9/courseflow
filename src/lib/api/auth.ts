@@ -1,9 +1,19 @@
 import { api } from "./client";
-import type { Session, User } from "@/lib/types/auth";
+import type { AuthResponse } from "@/lib/types/auth";
+
+export interface RegisterPayload {
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  role: "student" | "admin" | "mentor";
+}
 
 export const authApi = {
-  me: (token: string) => api.get<User>("/api/auth/me", token),
-  login: (email: string, password: string, role: "student" | "admin" | "mentor") =>
-    api.post<Session>("/api/auth/login", { email, password, role }),
-  logout: (token: string) => api.post<{ success: boolean }>("/api/auth/logout", {}, token),
+  adminRegister: (payload: RegisterPayload) =>
+    api.post<AuthResponse>("/auth/admin/register", payload),
+  adminLogin: (email: string, password: string) =>
+    api.post<AuthResponse>("/auth/admin/login", { email, password }),
+  logout: (token: string) =>
+    api.post<void>("/auth/logout", {}, token),
 };

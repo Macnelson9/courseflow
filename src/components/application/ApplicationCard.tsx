@@ -8,43 +8,29 @@ export interface ApplicationCardProps {
   application: Application;
   onAccept: () => Promise<void>;
   onReject: () => Promise<void>;
+  onWaitlist?: () => Promise<void>;
 }
 
-export function ApplicationCard({
-  application,
-  onAccept,
-  onReject,
-}: Readonly<ApplicationCardProps>) {
-  const actioned =
-    application.status === "accepted" || application.status === "rejected";
+export function ApplicationCard({ application, onAccept, onReject, onWaitlist }: Readonly<ApplicationCardProps>) {
+  const fullName = `${application.first_name} ${application.last_name}`;
 
   return (
     <Card
-      title={application.fullName}
-      description={`${application.email} · ${application.phone}${application.selectedCourse ? ` · ${application.selectedCourse}` : ""}`}
+      title={fullName}
+      description={`${application.email} · ${application.course_name}`}
       action={<ApplicationStatusBadge status={application.status} />}
       headerTone="inverse"
     >
-      <p className="line-clamp-3 font-mono text-caption text-muted">
-        {application.motivation}
-      </p>
-      <p className="mt-2 line-clamp-2 font-mono text-caption text-muted">
-        {application.experience}
-      </p>
-      <p className="mt-2 font-mono text-caption text-muted">
-        Applied: {formatDate(application.createdAt)}
-      </p>
-      {application.interviewDate ? (
-        <p className="mt-1 font-mono text-caption text-muted">
-          Interview: {application.interviewDate}
-        </p>
-      ) : null}
+      <p className="line-clamp-3 font-mono text-caption text-muted">{application.motivation}</p>
+      <p className="mt-2 line-clamp-2 font-mono text-caption text-muted">{application.experience}</p>
+      <p className="mt-2 font-mono text-caption text-muted">Applied: {formatDate(application.created_at)}</p>
       <div className="mt-4">
         <ApplicationActions
-          studentName={application.fullName}
-          disabled={actioned}
+          studentName={fullName}
+          status={application.status}
           onAccept={onAccept}
           onReject={onReject}
+          {...(onWaitlist ? { onWaitlist } : {})}
         />
       </div>
     </Card>

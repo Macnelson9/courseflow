@@ -8,11 +8,10 @@ import { isValidEmail } from "@/lib/utils/validators";
 export interface LoginFormProps {
   onSubmit: (email: string, password: string) => Promise<void>;
   isLoading: boolean;
-  error?: string | undefined;
   submitLabel?: string;
 }
 
-export function LoginForm({ onSubmit, isLoading, error, submitLabel = "Sign In" }: Readonly<LoginFormProps>) {
+export function LoginForm({ onSubmit, isLoading, submitLabel = "Sign In" }: Readonly<LoginFormProps>) {
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
 
   async function handleSubmit(formData: FormData) {
@@ -32,10 +31,9 @@ export function LoginForm({ onSubmit, isLoading, error, submitLabel = "Sign In" 
 
   return (
     <form action={handleSubmit} className="space-y-4" aria-busy={isLoading}>
-      {error ? <p className="border border-border bg-background p-3 font-mono text-caption text-foreground">{error}</p> : null}
       <Input name="email" type="email" label="Email" autoComplete="email" error={fieldErrors.email} />
       <Input name="password" type="password" label="Password" autoComplete="current-password" error={fieldErrors.password} />
-      <Button type="submit" loading={isLoading} className="w-full">
+      <Button type="submit" loading={isLoading} disabled={isLoading} className="w-full">
         {submitLabel}
       </Button>
     </form>

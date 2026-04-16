@@ -13,7 +13,7 @@ import { Shell } from "@/components/layout/Shell";
 
 const adminNav = [
   { label: "Overview", href: "/admin", icon: Home, match: "exact" as const },
-  { label: "Acceptance", href: "/admin/acceptance", icon: UserCheck },
+  { label: "Waitlist", href: "/admin/acceptance", icon: UserCheck },
   { label: "Applications", href: "/admin/applications", icon: ClipboardList },
   { label: "Attendance", href: "/admin/attendance", icon: CalendarCheck2 },
   { label: "Course", href: "/admin/course", icon: BookOpen },

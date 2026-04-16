@@ -1,12 +1,7 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { ApplicationForm } from "@/components/application/ApplicationForm";
 import { PageHeader } from "@/components/layout/PageHeader";
 
 export default function ApplyPage() {
-  const router = useRouter();
-
   return (
     <div className="space-y-8">
       <PageHeader
@@ -22,7 +17,7 @@ export default function ApplyPage() {
             dashboard access and attendance tools.
           </p>
           <div className="mt-5">
-            <ApplicationForm onSubmit={async () => router.prefetch("/login")} />
+            <ApplicationForm />
           </div>
         </article>
 

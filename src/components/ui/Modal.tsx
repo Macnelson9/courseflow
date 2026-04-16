@@ -72,7 +72,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: Readonly<Mod
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
-          className={cn("relative z-10 w-full border border-black bg-white p-6 text-black shadow-none transition duration-150")}
+          className={cn("relative z-10 w-full border border-black bg-white p-6 text-black shadow-none transition duration-150 stack-card hover:cursor-default")}
           onClick={(event) => event.stopPropagation()}
         >
           <h2 id={titleId} className="text-h2 text-black">
